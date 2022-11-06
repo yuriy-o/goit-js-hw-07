@@ -2,7 +2,6 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 const galleryEl = document.querySelector('.gallery');
-const galleryItemEl = document.querySelectorAll('.gallery__item');
 
 const imageMarkup = createImageItem(galleryItems);
 galleryEl.insertAdjacentHTML('beforeend', imageMarkup);
@@ -24,30 +23,28 @@ function createImageItem(galleryItems) {
     .join('');
 }
 
-galleryEl.addEventListener('click', onImageClick);
+galleryEl.addEventListener('click', onModalOpen);
 
-function onImageClick(event) {
+let instance = null;
+
+function onModalOpen(event) {
   event.preventDefault();
+  window.addEventListener('keydown', onEscKeyPress);
 
   const urlBigImage = event.target.getAttribute('data-source');
 
-  const instance = basicLightbox.create(`
-      <img src="${urlBigImage}" >
+  instance = basicLightbox.create(`
+  <img src="${urlBigImage}" >
   `);
 
   instance.show();
 }
 
-// v2
-// galleryEl.onclick = event => {
-//   event.preventDefault();
-//   const urlBigImage = event.target.getAttribute('data-source');
+//закриває модалку по Escape
+function onEscKeyPress(event) {
+  window.removeEventListener('keydown', onEscKeyPress);
 
-//   basicLightbox
-//     .create(
-//       `
-// 		<img width="1400" height="900" src="${urlBigImage}">
-// 	`
-//     )
-//     .show();
-// };
+  if (event.code === `Escape`) {
+    instance.close();
+  }
+}
