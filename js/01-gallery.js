@@ -30,7 +30,6 @@ function onImageClick(event) {
   event.preventDefault();
 
   const urlBigImage = event.target.getAttribute('data-source');
-  console.log('urlBigImage', urlBigImage);
 
   const instance = basicLightbox.create(`
       <img src="${urlBigImage}" >
@@ -40,15 +39,15 @@ function onImageClick(event) {
 }
 
 // v2
-galleryEl.onclick = event => {
-  event.preventDefault();
-  const urlBigImage = event.target.getAttribute('data-source');
+// galleryEl.onclick = event => {
+//   event.preventDefault();
+//   const urlBigImage = event.target.getAttribute('data-source');
 
-  basicLightbox
-    .create(
-      `
-		<img width="1400" height="900" src="${urlBigImage}">
-	`
-    )
-    .show();
-};
+//   basicLightbox
+//     .create(
+//       `
+// 		<img width="1400" height="900" src="${urlBigImage}">
+// 	`
+//     )
+//     .show();
+// };
