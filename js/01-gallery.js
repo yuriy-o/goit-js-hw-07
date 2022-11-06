@@ -16,6 +16,7 @@ function createImageItem(galleryItems) {
       src="${preview}"
       data-source="${original}"
       alt="${description}"
+      width="354" height="240"
     />
   </a>
 </div>`;
@@ -32,6 +33,9 @@ function onModalOpen(event) {
   window.addEventListener('keydown', onEscKeyPress);
 
   const urlBigImage = event.target.getAttribute('data-source');
+  // v2
+  //   const urlBigImage = event.target.dataset.source;
+  console.log(event.target);
 
   instance = basicLightbox.create(`
   <img src="${urlBigImage}" >
