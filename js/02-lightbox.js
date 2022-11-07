@@ -21,9 +21,10 @@ function onCreateImagesGallery(galleryItems) {
     .join('');
 }
 
-let gallery = new SimpleLightbox('.gallery a', {
+const gallery = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
   overlayOpacity: 0.8,
   closeText: '☣',
+  scrollZoom: false,
 });
