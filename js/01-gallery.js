@@ -30,12 +30,11 @@ let instance = null;
 
 function onModalOpen(event) {
   event.preventDefault();
-  window.addEventListener('keydown', onEscKeyPress);
+  window.addEventListener('keydown', onEscKeyPress, { onse: true });
 
   const urlBigImage = event.target.getAttribute('data-source');
   // v2
   //   const urlBigImage = event.target.dataset.source;
-  console.log(event.target);
 
   instance = basicLightbox.create(`
   <img src="${urlBigImage}" >
@@ -46,9 +45,10 @@ function onModalOpen(event) {
 
 //закриває модалку по Escape
 function onEscKeyPress(event) {
-  window.removeEventListener('keydown', onEscKeyPress);
-
   if (event.code === `Escape`) {
     instance.close();
   }
+
+  //   замість видалення використовуємо додаткове налаштування слухача ↑→ { onse: true }
+  //   window.removeEventListener('keydown', onEscKeyPress);
 }
