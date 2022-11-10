@@ -28,3 +28,6 @@ const gallery = new SimpleLightbox('.gallery a', {
   closeText: '☣',
   scrollZoom: false,
 });
+
+// положення тексту на картинці
+// captionPosition: 'top',
